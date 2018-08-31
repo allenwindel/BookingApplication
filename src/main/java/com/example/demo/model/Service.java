@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 @Entity
-@JsonIdentityInfo(generator = PropertyGenerator.class, property = "serviceID")
+//@JsonIdentityInfo(generator = PropertyGenerator.class, property = "serviceID")
 public class Service {
 
 	@Id
@@ -28,8 +28,10 @@ public class Service {
 	private List<Image> images;
 	@ManyToOne
 	@JoinColumn(name = "travel_package_id")
+	@JsonIgnore
 	private TravelPackage travelPackage;
 	@ManyToMany
+	@JsonIgnore
 	private List<Reservation> reservation;
 	@OneToMany
 	@JsonIgnore

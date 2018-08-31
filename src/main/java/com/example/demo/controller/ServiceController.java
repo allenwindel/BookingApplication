@@ -61,7 +61,9 @@ public class ServiceController {
 			imageService.saveImage(img);
 
 		}
-
+		
+		travelPackageService.findTravelPackageByID(travelPackageID).getService().add(service);
+		
 		return service;
 
 	}

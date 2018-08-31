@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 @Entity
-@JsonIdentityInfo(generator = PropertyGenerator.class, property = "customerID")
+//@JsonIdentityInfo(generator = PropertyGenerator.class, property = "customerID")
 public class Customer {
 
 	@Id
