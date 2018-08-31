@@ -7,8 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Reservation {
@@ -16,14 +16,12 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int reservationID;
-	@OneToMany
+	@ManyToMany
 	private List<Service> service;
 	private String departureDate;
 	@ManyToOne
 	@JoinColumn(name = "customerid")
 	private Customer customer;
-	
-	
 
 	public int getReservationID() {
 		return reservationID;

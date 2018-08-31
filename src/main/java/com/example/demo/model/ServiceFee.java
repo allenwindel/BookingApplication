@@ -1,22 +1,24 @@
 package com.example.demo.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 @Entity
+@JsonIdentityInfo(generator = PropertyGenerator.class, property = "serviceFeeID")
 public class ServiceFee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int serviceFeeID;
 	private float amount;
-	@OneToMany
-	private List<Service> service;
+	@ManyToOne
+	private Service service;
 	private String startDate;
 
 	public int getServiceFeeID() {
@@ -35,11 +37,11 @@ public class ServiceFee {
 		this.amount = amount;
 	}
 
-	public List<Service> getService() {
+	public Service getService() {
 		return service;
 	}
 
-	public void setService(List<Service> service) {
+	public void setService(Service service) {
 		this.service = service;
 	}
 

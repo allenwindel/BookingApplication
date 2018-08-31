@@ -7,10 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 @Entity
@@ -27,6 +29,21 @@ public class Service {
 	@ManyToOne
 	@JoinColumn(name = "travel_package_id")
 	private TravelPackage travelPackage;
+	@ManyToMany
+	private List<Reservation> reservation;
+	@OneToMany
+	@JsonIgnore
+	private List<ServiceFee> serviceFee;
+	
+	
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
 
 	public TravelPackage getTravelPackage() {
 		return travelPackage;

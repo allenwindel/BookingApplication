@@ -25,6 +25,14 @@ public class Customer {
 	@JsonIgnore
 	private List<Reservation> reservation;
 
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
+
 	public int getCustomerID() {
 		return customerID;
 	}

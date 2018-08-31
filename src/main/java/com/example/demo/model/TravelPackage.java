@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 @Entity
-@JsonIdentityInfo(generator = PropertyGenerator.class,property = "travelPackageID")
+@JsonIdentityInfo(generator = PropertyGenerator.class, property = "travelPackageID")
 public class TravelPackage {
 
 	@Id

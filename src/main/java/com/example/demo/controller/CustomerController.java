@@ -13,17 +13,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.Reservation;
 import com.example.demo.service.CustomerService;
+import com.example.demo.service.ReservationService;
 
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
 	
 	private CustomerService customerService;
+	private ReservationService reservationService;
 
-	public CustomerController(CustomerService customerService) {
+	public CustomerController(CustomerService customerService,ReservationService reservationService) {
 		super();
 		this.customerService = customerService;
+		this.reservationService = reservationService;
 	}
 	
 	@GetMapping
@@ -43,7 +47,15 @@ public class CustomerController {
 	@PostMapping
 	public Customer saveCustomer(@RequestBody Customer customer) {
 		
-		return customerService.saveCustomer(customer);
+		customer = customerService.saveCustomer(customer);
+//		for(Reservation rv : customer.getReservation()) {
+//			
+//			rv.setCustomer(customer);
+//			reservationService.saveReservation(rv);
+//			
+//		}
+		
+		return customer;
 		
 	}
 	
